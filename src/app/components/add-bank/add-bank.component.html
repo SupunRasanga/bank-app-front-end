@@ -1,0 +1,81 @@
+<h1 mat-dialog-title>Add Banks</h1>
+<div mat-dialog-content>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Bank Id</mat-label>
+    <input matInput placeholder="Enter Bank Id">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Bank Name</mat-label>
+    <input matInput placeholder="Enter Bank Name">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Bank Code</mat-label>
+    <input matInput placeholder="Enter Bank Code">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field color="accent" appearance="fill">
+    <mat-label>Incorporate Date</mat-label>
+    <input matInput [matDatepicker]="picker1">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+
+  <mat-form-field appearance="outline">
+    <mat-label>No Of Staff</mat-label>
+    <input matInput placeholder="Enter Bank Code">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>No Of Branches</mat-label>
+    <input matInput placeholder="Enter Bank Code">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Status</mat-label>
+    <mat-select>
+      <mat-option value="Active">Active</mat-option>
+      <mat-option value="Inactive">Inactive</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="row">
+    <div class="col-6"></div>
+
+    <div class="col-6">
+      <button mat-raised-button class="btn-success mr-2">Register</button>
+      <button mat-raised-button class="btn-danger" mat-dialog-close="">Close</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- <p>
+  <mat-form-field appearance="outline">
+    <mat-label>Outline form field</mat-label>
+    <input matInput placeholder="Placeholder">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+</p> -->
+
+
+<!--
+  private long bankId;
+	private String bankName;
+	private String code;
+	private String incorporateDate;
+	private int noOfStaff;
+	private int noOfBranches;
+	private String status; -->
+
+
