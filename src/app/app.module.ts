@@ -8,6 +8,8 @@ import { FooterComponent } from './components/footer/footer.component';
 import { MaterialModule } from './material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { AddBankComponent } from './components/add-bank/add-bank.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -23,6 +25,9 @@ import { AddBankComponent } from './components/add-bank/add-bank.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
     MaterialModule,
   ],
   providers: [],

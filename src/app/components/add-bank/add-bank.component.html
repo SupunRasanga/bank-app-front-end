@@ -1,61 +1,62 @@
 <h1 mat-dialog-title>Add Banks</h1>
 <div mat-dialog-content>
+    <form [formGroup]="bankForm" (ngSubmit)="onSaveOrUpdate()">
+      <mat-form-field appearance="outline">
+        <mat-label>Bank Id</mat-label>
+        <input matInput placeholder="Enter Bank Id" formControlName="bankId">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Bank Id</mat-label>
-    <input matInput placeholder="Enter Bank Id">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-  </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Bank Name</mat-label>
+        <input matInput placeholder="Enter Bank Name" formControlName="bankName">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Bank Name</mat-label>
-    <input matInput placeholder="Enter Bank Name">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-  </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>Bank Code</mat-label>
+        <input matInput placeholder="Enter Bank Code" formControlName="code">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>Bank Code</mat-label>
-    <input matInput placeholder="Enter Bank Code">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-  </mat-form-field>
-
-  <mat-form-field color="accent" appearance="fill">
-    <mat-label>Incorporate Date</mat-label>
-    <input matInput [matDatepicker]="picker1">
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-    <mat-datepicker #picker1></mat-datepicker>
-  </mat-form-field>
+      <mat-form-field color="accent" appearance="fill">
+        <mat-label>Incorporate Date</mat-label>
+        <input matInput [matDatepicker]="picker1" formControlName="incorporateDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+      </mat-form-field>
 
 
-  <mat-form-field appearance="outline">
-    <mat-label>No Of Staff</mat-label>
-    <input matInput placeholder="Enter Bank Code">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-  </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>No Of Staff</mat-label>
+        <input matInput placeholder="Enter Bank Code" formControlName="noOfStaff">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
 
-  <mat-form-field appearance="outline">
-    <mat-label>No Of Branches</mat-label>
-    <input matInput placeholder="Enter Bank Code">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-  </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>No Of Branches</mat-label>
+        <input matInput placeholder="Enter Bank Code" formControlName="noOfBranches">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Status</mat-label>
-    <mat-select>
-      <mat-option value="Active">Active</mat-option>
-      <mat-option value="Inactive">Inactive</mat-option>
-    </mat-select>
-  </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Status</mat-label>
+        <mat-select formControlName="status">
+          <mat-option value="Active">Active</mat-option>
+          <mat-option value="Inactive">Inactive</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-  <div class="row">
-    <div class="col-6"></div>
+      <div class="row">
+        <div class="col-6"></div>
 
-    <div class="col-6">
-      <button mat-raised-button class="btn-success mr-2">Register</button>
-      <button mat-raised-button class="btn-danger" mat-dialog-close="">Close</button>
-    </div>
-  </div>
+        <div class="col-6">
+          <button type="submit" mat-raised-button class="btn-success mr-2">Register</button>
+          <button mat-raised-button class="btn-danger" mat-dialog-close="">Close</button>
+        </div>
+      </div>
+    </form>
 
 </div>
 
