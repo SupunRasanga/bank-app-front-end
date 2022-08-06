@@ -17,30 +17,15 @@ export class BankService {
   }
 
   getAll(): Observable<any>{
-    return this.http.get(`${this.baseURL}`).pipe(map((res) => {
-      const banks:any[] = [];
-      for(const key in res){
-        if(res.hasOwnProperty(key)){
-          banks.push({...res[key], id: key});
-        }
-      }
-      return banks;
-    }));
+   return this.http.get<any>(this.baseURL,{})
   }
 
-  // getAll(): Observable<any>{
-  //   //return this.http.get(`${this.baseAPIUrl}/customer.json`).pipe(map((res) => {
-  //   return this.http.get(`${this.baseURL}/customer.json`).pipe(map((res) => {
-  //     const customers:any[] = [];
-  //     for(const key in res){
-  //       if(res.hasOwnProperty(key)){
-  //         customers.push({...res[key], id: key});
-  //       }
-  //     }
-  //     return customers;
-  //   }));
-  // }
+  deleteBank(bankId: number): Observable<any>{
+    return this.http.delete<any>(`${this.baseURL}/${bankId}`);
+  }
 
-
+  getBankById(bankId: number): Observable<any>{
+    return this.http.get<any>(`${this.baseURL}/${bankId}`);
+  }
 
 }
