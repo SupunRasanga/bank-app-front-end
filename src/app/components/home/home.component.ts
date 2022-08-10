@@ -21,13 +21,15 @@ export class HomeComponent implements OnInit {
   @ViewChild(MatSort) empTbSort = new MatSort();
 
 
-  displayedColumns: string[] = ['bankId', 'bankName', 'code', 'incorporateDate','noOfStaff','noOfBranches','status', 'action','filter','add'];
+  displayedColumns: string[] = ['bankId', 'bankName', 'code', 'incorporateDate','noOfStaff','noOfBranches','status','filter','add'];
   dataSource !: MatTableDataSource<any>;
   bankList : BankModel[] = [];
+  isSearch = false;
 
 
   ngOnInit(): void {
     this.getList();
+    this.isSearch=false;
   }
 
   applyFilter(event: Event) {
@@ -44,6 +46,9 @@ export class HomeComponent implements OnInit {
       width: '50%',
       data: ''
     });
+   this.dialog.afterAllClosed.subscribe(res => {
+      this.getList();
+   });
   }
 
   getList():void{
@@ -71,6 +76,10 @@ export class HomeComponent implements OnInit {
       width: '50%',
       data: {Bank: bank},
     });
+  }
+
+  onSearch(){
+    this.isSearch = true;
   }
 
 }

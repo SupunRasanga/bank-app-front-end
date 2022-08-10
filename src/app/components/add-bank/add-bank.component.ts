@@ -29,7 +29,6 @@ export class AddBankComponent implements OnInit {
     this.loading$=this.loading.asObservable();
     this.initForm();
     this.onUpdate();
-    this.getList();
   }
 
   initForm():void {
@@ -38,8 +37,8 @@ export class AddBankComponent implements OnInit {
       bankName: ['',[Validators.required]],
       code: ['',[Validators.required]],
       incorporateDate: ['',[Validators.required]],
-      noOfStaff: ['',[Validators.required]],
-      noOfBranches: ['',[Validators.required]],
+      noOfStaff: ['',[Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      noOfBranches: ['',[Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
       status: ['',[Validators.required]]
     })
   }
@@ -52,7 +51,6 @@ export class AddBankComponent implements OnInit {
         this.bankService.updateBank(this.selectedId, this.bankForm.value).subscribe(res => {
           alert('Bank Update Successfully !');
           this.bankForm.reset();
-          this.getList();
           this.dialog.close();
         })
       }else{
@@ -61,7 +59,6 @@ export class AddBankComponent implements OnInit {
           alert('Bank Registered Successfully !');
           this.bankForm.reset();
           this.dialog.close();
-          this.getList();
         },error =>{
           alert('Error occured when saving data.\n' + error);
         },()=>{
