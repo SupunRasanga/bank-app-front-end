@@ -17,7 +17,7 @@ export class BankService {
   }
 
   getAll(): Observable<any>{
-   return this.http.get<any>(this.baseURL,{})
+   return this.http.get<any>(this.baseURL,{});
   }
 
   deleteBank(bankId: number): Observable<any>{
@@ -26,6 +26,14 @@ export class BankService {
 
   getBankById(bankId: number): Observable<any>{
     return this.http.get<any>(`${this.baseURL}/${bankId}`);
+  }
+
+  updateBank(bankId: number, body: any): Observable<any>{
+    return this.http.put<any>(`${this.baseURL}/${bankId}`,body);
+  }
+
+  sortBank(req: string): Observable<any>{
+    return this.http.get<any>(this.baseURL+"/sorting?sortBy=" +req);
   }
 
 }

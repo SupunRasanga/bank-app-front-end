@@ -1,40 +1,41 @@
 <div class="container mt-5  table-striped table-hover">
   <div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
+
+    <table mat-table [dataSource]="dataSource" matSort>
 
       <!-- Position Column -->
       <ng-container matColumnDef="bankId">
-        <th mat-header-cell *matHeaderCellDef>Bank ID</th>
-        <td mat-cell *matCellDef="let element"> {{element.bankId}} </td>
+        <th class="point pad" mat-header-cell mat-sort-header *matHeaderCellDef>Bank ID</th>
+        <td mat-cell *matCellDef="let element" > {{element.bankId}} </td>
       </ng-container>
 
       <ng-container matColumnDef="bankName">
-        <th mat-header-cell *matHeaderCellDef>Bank Name</th>
+        <th class="point pad" mat-header-cell mat-sort-header *matHeaderCellDef>Bank Name</th>
         <td mat-cell *matCellDef="let element"> {{element.bankName}} </td>
       </ng-container>
 
       <ng-container matColumnDef="code">
-        <th mat-header-cell *matHeaderCellDef>Code</th>
+        <th class="point" mat-header-cell mat-sort-header *matHeaderCellDef>Code</th>
         <td mat-cell *matCellDef="let element"> {{element.code}} </td>
       </ng-container>
 
       <ng-container matColumnDef="incorporateDate">
-        <th mat-header-cell *matHeaderCellDef>Incorporate Date</th>
+        <th class="point" mat-header-cell mat-sort-header *matHeaderCellDef>Incorporate Date</th>
         <td mat-cell *matCellDef="let element"> {{element.incorporateDate}} </td>
       </ng-container>
 
       <ng-container matColumnDef="noOfStaff">
-        <th mat-header-cell *matHeaderCellDef>No Of Staff</th>
+        <th class="point" mat-header-cell mat-sort-header *matHeaderCellDef>No Of Staff</th>
         <td mat-cell *matCellDef="let element"> {{element.noOfStaff}} </td>
       </ng-container>
 
       <ng-container matColumnDef="noOfBranches">
-        <th mat-header-cell *matHeaderCellDef>No of Branches</th>
+        <th class="point" mat-header-cell mat-sort-header *matHeaderCellDef>No of Branches</th>
         <td mat-cell *matCellDef="let element"> {{element.noOfBranches}} </td>
       </ng-container>
 
       <ng-container matColumnDef="status">
-        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <th class="point" mat-header-cell mat-sort-header *matHeaderCellDef>Status</th>
         <td mat-cell *matCellDef="let element"> {{element.status}} </td>
       </ng-container>
 
@@ -44,6 +45,15 @@
         <td mat-cell *matCellDef="let element">
             <button mat-raised-button class="btn-outline-success mr-2" (click)="onUpdate(element)">U</button>
             <button mat-raised-button class="btn-outline-danger" (click)="onDelete(element.bankId);">D</button>
+          </td>
+      </ng-container>
+
+      <!-- Filter -->
+      <ng-container matColumnDef="filter">
+        <th mat-header-cell *matHeaderCellDef>
+          <input matInput mat-raised (keyup)="applyFilter($event)" placeholder="Filter By" #input>
+        </th>
+        <td mat-cell *matCellDef="let element">
           </td>
       </ng-container>
 

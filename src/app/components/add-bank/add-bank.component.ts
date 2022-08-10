@@ -2,7 +2,6 @@ import { Component, Inject, Injectable, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { BankService } from 'src/app/services/bank.service';
-import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
@@ -35,7 +34,7 @@ export class AddBankComponent implements OnInit {
 
   initForm():void {
     this.bankForm = this.fb.group({
-      bankId: ['',[Validators.required]],
+      bankId: ['',[Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
       bankName: ['',[Validators.required]],
       code: ['',[Validators.required]],
       incorporateDate: ['',[Validators.required]],
@@ -46,17 +45,31 @@ export class AddBankComponent implements OnInit {
   }
 
   onSaveOrUpdate():void {
-    // console.log(this.bankForm)
-    this.bankService.createBank(this.bankForm.value).subscribe(res=>{
-      alert('Bank Registered Successfully !');
-      this.bankForm.reset();
-      this.getList();
-    },error =>{
-      alert('Error occured when saving data.\n' + error);
-    },()=>{
-      // console.log('completed');
-    })
-    // console.log(this.bankForm.value);
+    if(this.bankForm.invalid){
+        alert('Please fill required feilds !')
+    }else{
+      if(this.isUpdate == true){
+        this.bankService.updateBank(this.selectedId, this.bankForm.value).subscribe(res => {
+          alert('Bank Update Successfully !');
+          this.bankForm.reset();
+          this.getList();
+          this.dialog.close();
+        })
+      }else{
+
+        this.bankService.createBank(this.bankForm.value).subscribe(res=>{
+          alert('Bank Registered Successfully !');
+          this.bankForm.reset();
+          this.dialog.close();
+          this.getList();
+        },error =>{
+          alert('Error occured when saving data.\n' + error);
+        },()=>{
+        })
+
+      }
+    }
+
 
   }
 
@@ -72,31 +85,25 @@ export class AddBankComponent implements OnInit {
   }
 
   onUpdate(){
-    this.selectedId = this.data.bankId
-      console.log(this.selectedId);
-      console.log(this.data);
+    if(this.data.Bank != null){
+      this.selectedId = this.data.Bank.bankId
+
       this.isUpdate = true;
 
-
       this.bankForm.patchValue({
-        bankId: this.data.bankId,
-        bankName: this.data.bankName,
-        code: this.data.code,
-        incorporateDate: this.data.incorporateDate,
-        noOfStaff: this.data.noOfStaff,
-        noOfBranches: this.data.noOfBranches,
-        status: this.data.status
+        bankId: this.data.Bank.bankId,
+        bankName: this.data.Bank.bankName,
+        code: this.data.Bank.code,
+        incorporateDate: this.data.Bank.incorporateDate,
+        noOfStaff: this.data.Bank.noOfStaff,
+        noOfBranches: this.data.Bank.noOfBranches,
+        status: this.data.Bank.status
       });
 
-    // this.isUpdate = false;
-    // console.log(this.bankForm.value);
-    // console.log(this.selectedId);
+    }else{
+      this.isUpdate = false;
+    }
 
   }
-
-  departments = [
-    { id: 3, value: 'Dep 1' },
-    { id: 2, value: 'Dep 2' },
-    { id: 3, value: 'Dep 3' }];
 
 }

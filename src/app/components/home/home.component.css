@@ -22,3 +22,9 @@ td{
 .demo-row-is-clicked {
   font-weight: bold;
 }
+
+.point {
+  cursor: pointer;
+}
+
+

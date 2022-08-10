@@ -18,6 +18,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatNativeDateModule } from '@angular/material/core';
+import {MatSortModule} from '@angular/material/sort';
 
 const MaterialComponent = [
   MatToolbarModule,
@@ -37,7 +38,8 @@ const MaterialComponent = [
   MatRadioModule,
   MatSelectModule,
   MatCheckboxModule,
-  MatNativeDateModule
+  MatNativeDateModule,
+  MatSortModule
 ];
 
 

@@ -10,6 +10,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AddBankComponent } from './components/add-bank/add-bank.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -19,7 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     HeaderComponent,
     FooterComponent,
-    AddBankComponent
+    AddBankComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

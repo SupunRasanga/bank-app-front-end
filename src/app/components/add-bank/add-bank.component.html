@@ -1,42 +1,59 @@
 <h1 mat-dialog-title>Add Banks</h1>
 <div mat-dialog-content>
     <form [formGroup]="bankForm" (ngSubmit)="onSaveOrUpdate()">
-      <mat-form-field appearance="outline">
-        <mat-label>Bank Id</mat-label>
-        <input matInput placeholder="Enter Bank Id" formControlName="bankId">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      </mat-form-field>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Bank Id</mat-label>
+            <input matInput placeholder="Enter Bank Id" formControlName="bankId" [disabled]="isUpdate">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+        </div>
+        <div class="col-6">
 
-      <mat-form-field appearance="outline">
-        <mat-label>Bank Name</mat-label>
-        <input matInput placeholder="Enter Bank Name" formControlName="bankName">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      </mat-form-field>
+          <mat-form-field appearance="outline">
+            <mat-label>Bank Name</mat-label>
+            <input matInput placeholder="Enter Bank Name" formControlName="bankName">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Bank Code</mat-label>
-        <input matInput placeholder="Enter Bank Code" formControlName="code">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      </mat-form-field>
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field color="accent" appearance="fill">
+            <mat-label>Incorporate Date</mat-label>
+            <input type="date" matInput formControlName="incorporateDate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+          </mat-form-field>
+        </div>
 
-      <mat-form-field color="accent" appearance="fill">
-        <mat-label>Incorporate Date</mat-label>
-        <input type="date" matInput formControlName="incorporateDate">
-        <mat-hint>MM/DD/YYYY</mat-hint>
-      </mat-form-field>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>Bank Code</mat-label>
+            <input matInput placeholder="Enter Bank Code" formControlName="code">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
 
+      <div class="row">
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>No Of Staff</mat-label>
+            <input matInput placeholder="Enter No Of Staff" formControlName="noOfStaff">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+        </div>
 
-      <mat-form-field appearance="outline">
-        <mat-label>No Of Staff</mat-label>
-        <input matInput placeholder="Enter No Of Staff" formControlName="noOfStaff">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      </mat-form-field>
-
-      <mat-form-field appearance="outline">
-        <mat-label>No Of Branches</mat-label>
-        <input matInput placeholder="Enter No Of Branches" formControlName="noOfBranches">
-        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      </mat-form-field>
+        <div class="col-6">
+          <mat-form-field appearance="outline">
+            <mat-label>No Of Branches</mat-label>
+            <input matInput placeholder="Enter No Of Branches" formControlName="noOfBranches">
+            <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+          </mat-form-field>
+        </div>
+      </div>
 
       <mat-form-field appearance="fill">
         <mat-label>Status</mat-label>
@@ -48,7 +65,7 @@
 
       <div class="row">
         <div class="col text-right">
-          <button type="submit" mat-raised-button class="btn-success mr-2">{{isUpdate ? 'Update' : 'Save'}}</button>
+          <button type="submit" mat-raised-button class="btn-success mr-2" [disabled]="bankForm.invalid">{{isUpdate ? 'Update' : 'Save'}}</button>
           <button mat-raised-button class="btn-danger" mat-dialog-close="" (click)="onClose()">Close</button>
         </div>
       </div>
