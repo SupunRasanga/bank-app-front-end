@@ -39,19 +39,13 @@
         <td mat-cell *matCellDef="let element"> {{element.status}} </td>
       </ng-container>
 
-      <!-- Action Column -->
-      <ng-container matColumnDef="action">
-        <th mat-header-cell *matHeaderCellDef>Action</th>
-        <td mat-cell *matCellDef="let element">
-            <button mat-raised-button class="btn-outline-success mr-2" (click)="onUpdate(element)">U</button>
-            <button mat-raised-button class="btn-outline-danger" (click)="onDelete(element.bankId);">D</button>
-          </td>
-      </ng-container>
+
 
       <!-- Filter -->
       <ng-container matColumnDef="filter">
         <th mat-header-cell *matHeaderCellDef>
-          <input matInput mat-raised (keyup)="applyFilter($event)" placeholder="Filter By" #input>
+          <button *ngIf="!isSearch" mat-button (click)="onSearch()"> <mat-icon>search</mat-icon> </button>
+          <input *ngIf="isSearch" class="filter" matInput mat-raised (keyup)="applyFilter($event)" placeholder="Filter By" #input>
         </th>
         <td mat-cell *matCellDef="let element">
           </td>
@@ -60,7 +54,10 @@
       <!-- Add Button -->
       <ng-container matColumnDef="add">
         <th mat-header-cell *matHeaderCellDef><button mat-raised-button class="btn-success mr-2" mat-button (click)="openDialog()">Add Bank</button></th>
-        <td mat-cell *matCellDef="let element"></td>
+        <td mat-cell *matCellDef="let element">
+          <button mat-raised-button class="btn-outline-success mr-2" (click)="onUpdate(element)">U</button>
+          <button mat-raised-button class="btn-outline-danger" (click)="onDelete(element.bankId);">D</button>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
