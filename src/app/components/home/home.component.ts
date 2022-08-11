@@ -76,6 +76,9 @@ export class HomeComponent implements OnInit {
       width: '50%',
       data: {Bank: bank},
     });
+    this.dialog.afterAllClosed.subscribe(res => {
+      this.getList();
+   });
   }
 
   onSearch(){
