@@ -8,7 +8,7 @@ import { HomeComponent } from '../components/home/home.component';
 })
 export class BankService {
 
-  private baseURL = "http://localhost:8086/api/home/bank";
+  private baseURL = "https://spring-boot-banks.herokuapp.com/api/home/bank";
 
   constructor(private http: HttpClient) { }
 
